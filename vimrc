@@ -9,6 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on
