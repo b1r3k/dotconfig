@@ -10,6 +10,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -70,4 +72,20 @@ if &t_Co > 2 || has("gui_running")
 " switch syntax highlighting on, when the terminal has colors
 	syntax on
 endif
+
+"
+" File type specific settings
+"
+augroup WrapLineInMarkdownFile
+    autocmd!
+    autocmd FileType markdown setlocal nolist
+    autocmd FileType markdown setlocal formatoptions=l
+    autocmd FileType markdown setlocal linebreak
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType markdown setlocal nonumber
+augroup END
+"
+" PLUGIN SPECIFIC SETTINGS
+"
+let g:vim_markdown_folding_disabled=1   " do not fold text
 
