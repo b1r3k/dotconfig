@@ -119,7 +119,7 @@ basicLayout = Tall nmaster delta ratio where
 tallLayout = named "tall" $ avoidStruts $ noBorders $ basicLayout
 wideLayout = named "wide" $ avoidStruts $ noBorders $ Mirror basicLayout
 singleLayout = named "single" $ avoidStruts $ noBorders Full
-fullscreenLayout = named "fullscreen" $ noBorders Full
+fullscreenLayout = named "fullscreen" $ smartBorders Full
 --gimpLayout = named "gimp-fullscreen" $ withIM (0.11) (Role "gimp-toolbox") $ reflectHoriz $ withIM (0.15) (Role "gimp-dock") $ noBorders Full
 gimpLayout = withIM (11/64) (Role "gimp-toolbox") $ ResizableTall 2 (1/118) (11/20) [1] ||| Full
 
