@@ -58,8 +58,8 @@ set encoding=utf-8
 set ruler
 
 " show invisible characters with the same characters that TextMate uses
-set list
-set listchars=tab:▸\ ,eol:¬
+" set list
+" set listchars=tab:▸\ ,eol:¬
 
 " use w!! to sudo after editing file which required root priv
 cmap w!! w !sudo tee % >/dev/null
@@ -88,4 +88,20 @@ augroup END
 " PLUGIN SPECIFIC SETTINGS
 "
 let g:vim_markdown_folding_disabled=1   " do not fold text
+
+" YouCompleteMe
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'md' : 1,
+      \ 'mkd' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
 
