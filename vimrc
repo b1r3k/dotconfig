@@ -12,6 +12,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'easymotion/vim-easymotion' " acejump feature
+Plugin 'terryma/vim-expand-region' " ctrl+w feature from emacs
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -22,6 +24,9 @@ au FocusLost * :wa
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Save
+nmap <silent> <C-S> :update<CR> 
 
 " you can have unwritten changes to a file and open a new file using :e,
 " without being forced to write or undo your changes first. Also, undo buffers
@@ -73,6 +78,18 @@ if &t_Co > 2 || has("gui_running")
 	syntax on
 endif
 
+""" HELPERS
+" Here is a function and command to see a diff between the currently edited file and its unmodified version in the filesystem.
+" To get out of diff view you can use the :diffoff command.
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 "
 " File type specific settings
 "
@@ -105,3 +122,19 @@ let g:ycm_filetype_blacklist = {
       \ 'mail' : 1
       \}
 
+" Easy motion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+map  <Leader><Leader> <Plug>(easymotion-sn)
+omap <Leader><Leader> <Plug>(easymotion-tn)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
