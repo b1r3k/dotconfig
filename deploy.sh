@@ -18,3 +18,6 @@ do
     fi
     ln -s $file $conf
 done
+
+# update fonts cache
+sudo fc-cache -fv
