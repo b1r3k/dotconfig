@@ -1,0 +1,33 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  window_state = maximise
+  focus = mouse
+  borderless = True
+[keybindings]
+[profiles]
+  [[default]]
+    use_system_font = False
+    font = Monospace 10
+    audible_bell = True
+    scrollbar_position = hidden
+    cursor_color = "#086600"
+    foreground_color = "#ffffff"
+    scroll_on_output = False
+    login_shell = True
+    copy_on_selection = True
+    background_color = "#300a24"
+    scrollback_infinite = True
+  [[dev]]
+    scrollbar_position = hidden
+    scroll_on_output = False
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
