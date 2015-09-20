@@ -1,0 +1,35 @@
+[user]
+	name = Lukasz Jachym 
+	email = lukasz.jachym@gmail.com
+
+[diff]
+	tool = meld
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1366x748+0+20
+	history-view-vpane-position = 450
+	main-window-view = HistoryView
+	file-view-vpane-position = 353
+	show-graph = true
+	file-view-hpane-position = 247
+[merge]
+    ff = no
+
+[alias]
+    #what do I have in my toolbox?
+    toolbox = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    
+    #Deletes all branches that were safely merged into the master. All other are skipped (no worries).
+    cleanup = !git branch --merged master | grep -v 'master$' | xargs -r git branch -d
+
+    #Deletes orphaned remote branches (.git/refs/remotes/origin), clean up reflog and remove all untracked files
+    cleanuplocal = !git remote prune origin && git gc && git clean -df
+
+    # merge according to validately standard
+    vldtmerge = "!bash /home/lukasz/workspace/cx-lab/projects/validately/vldt-merge.sh"
+
+    # rename remote branch
+    rename = "!f() { git push origin origin/$1:refs/heads/$2 :$1; }; f"
+
+[push]
+	default = upstream
